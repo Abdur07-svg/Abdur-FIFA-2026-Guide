@@ -98,6 +98,7 @@ h1 {
   font-size: clamp(58px, 8vw, 118px);
   line-height: .88;
   letter-spacing: 0;
+  overflow-wrap: anywhere;
 }
 h2 {
   margin-bottom: 8px;
@@ -110,6 +111,7 @@ h2 {
   color: rgba(255,255,255,.86);
   font-size: 20px;
   line-height: 1.5;
+  overflow-wrap: anywhere;
 }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
 .primary-button, .ghost-button {
@@ -519,14 +521,48 @@ footer p { margin: 0; }
 footer a { color: var(--blue); font-weight: 800; }
 
 @media (max-width: 860px) {
-  .hero { min-height: auto; padding: 18px; }
+  .hero {
+    min-height: auto;
+    padding: 18px;
+    background:
+      linear-gradient(90deg, rgba(6, 15, 19, .9), rgba(6, 15, 19, .58)),
+      url("https://upload.wikimedia.org/wikipedia/commons/8/88/Interior_view_of_the_MetLife_Stadium_-_ARG_v_CAN_-_2024-07-09.jpg") center / cover;
+  }
   .topbar, .hero-grid, .section-head, .split, .watch, footer, .calendar-layout {
     grid-template-columns: 1fr;
   }
-  .topbar, .section-head, footer { align-items: start; }
-  .navlinks { width: 100%; overflow-x: auto; justify-content: space-between; }
-  .hero-grid { padding: 64px 0 28px; }
-  h1 { font-size: clamp(44px, 15vw, 70px); }
+  .topbar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+  }
+  .section-head, footer { align-items: start; }
+  .brand {
+    width: 100%;
+    justify-content: flex-start;
+  }
+  .navlinks {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 4px;
+    overflow: visible;
+    justify-content: stretch;
+    border-radius: 8px;
+    padding: 6px;
+  }
+  .navlinks a {
+    min-width: 0;
+    padding: 9px 4px;
+    text-align: center;
+    font-size: 13px;
+  }
+  .hero-grid { padding: 56px 0 28px; }
+  h1 {
+    font-size: clamp(42px, 13vw, 64px);
+    line-height: .94;
+  }
+  .lede { font-size: 18px; }
   .quick-strip, .player-grid, .groups-grid, .watch-grid, .calendar-months {
     grid-template-columns: 1fr;
   }
@@ -554,10 +590,33 @@ footer a { color: var(--blue); font-weight: 800; }
     border-radius: 7px;
   }
   .fixture { padding: 15px; }
+  .match-card { padding: 16px; }
+  .match-card strong { font-size: 28px; }
+  .scoreline {
+    grid-template-columns: 1fr;
+  }
+  .scoreline span {
+    min-height: 48px;
+  }
   .team {
     align-items: flex-start;
     flex-direction: column;
     gap: 6px;
   }
   .watch { padding: 20px; }
+}
+
+@media (max-width: 360px) {
+  .navlinks a { font-size: 12px; }
+  h1 { font-size: 38px; }
+  .hero-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .primary-button, .ghost-button {
+    width: 100%;
+  }
+  .calendar-day, .calendar-blank {
+    min-height: 36px;
+  }
 }
