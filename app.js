@@ -113,12 +113,12 @@ const fixtures = [
 }));
 
 const players = [
+  { name: "Cristiano Ronaldo", team: "Portugal", role: "Captain scorer", note: "Ronaldo is NOT just a player for Portugal. He plays multiple critical roles at once on the world stage.", initials: "CR", chips: ["finishing", "leadership", "counters"] },
   { name: "Kylian Mbappe", team: "France", role: "Explosive forward", note: "Still the nightmare transition runner. France can win games by turning one loose pass into a sprint lane.", initials: "KM", chips: ["pace", "finishing", "big-stage"] },
   { name: "Lionel Messi", team: "Argentina", role: "Creator", note: "The defending champions still bend around his timing, passing angles, and set-piece gravity.", initials: "LM", chips: ["vision", "control", "legacy"] },
   { name: "Erling Haaland", team: "Norway", role: "Penalty-box force", note: "Norway's ceiling jumps if service arrives early. One touch can change the whole group.", initials: "EH", chips: ["power", "movement", "golden boot"] },
   { name: "Jude Bellingham", team: "England", role: "Midfield leader", note: "Carries the ball, attacks the box, and gives England a rare blend of edge and poise.", initials: "JB", chips: ["duels", "runs", "tempo"] },
   { name: "Vinicius Junior", team: "Brazil", role: "Left-side breaker", note: "If Brazil isolate him high and wide, fullbacks spend the night defending backwards.", initials: "VJ", chips: ["1v1", "speed", "chance creation"] },
-  { name: "Mohamed Salah", team: "Egypt", role: "Captain scorer", note: "Egypt's counterattack always has a destination when Salah can receive on the half-turn.", initials: "MS", chips: ["finishing", "leadership", "counters"] }
 ];
 
 const groups = [
