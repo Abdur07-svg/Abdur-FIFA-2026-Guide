@@ -270,6 +270,11 @@ document.querySelector("#teamSearch").addEventListener("input", (event) => {
   renderGroups(event.target.value);
 });
 
+const btn = document.getElementById('backToTop');
+      window.addEventListener('scroll', () => {
+        btn.classList.toggle('visible', window.scrollY > 400);
+      });
+
 renderFixtures();
 renderCalendar();
 renderPlayers();
