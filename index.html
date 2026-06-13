@@ -1,137 +1,155 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>World Cup 2026 Guide</title>
-    <link rel="preconnect" href="https://upload.wikimedia.org" />
-    <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="images/favicon-192.png">
-    <link rel="apple-touch-icon" href="images/favicon-180.png">
-    <meta name="theme-color" content="#0a0a0a">
-  </head>
-  <body>
-    <header class="hero">
-      <nav class="topbar" aria-label="Primary">
-        <a class="brand" href="#top" aria-label="World Cup 2026 guide home">
-          <span class="brand-mark">26</span>
-          <span>World Cup Guide (ABDUR RAJJAK)</span>
-        </a>
-        <div class="navlinks">
-          <a href="#schedule">Schedule</a>
-          <a href="#players">Players</a>
-          <a href="#teams">Teams</a>
-          <a href="#watch">Watch</a>
-        </div>
-      </nav>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>FIFA World Cup 2026 Guide | Schedule, Groups & Players</title>
+<meta name="description" content="Complete FIFA World Cup 2026 guide: calendar of all 104 matches, live group standings and players to watch across USA, Mexico and Canada." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<link rel="stylesheet" href="style.css">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png">
+<link rel="icon" type="image/png" sizes="192x192" href="images/favicon-192.png">
+<link rel="apple-touch-icon" href="images/favicon-180.png">
+<meta name="theme-color" content="#0a0a0a">
+</head>
+<body>
 
-      <div class="hero-grid" id="top">
-        <section class="hero-copy">
-          <p class="eyebrow">Canada / Mexico / United States</p>
-          <h1>2026 FIFA World Cup Guide</h1>
-          <p class="lede">A clean matchday hub for the expanded 48-team tournament: TV guide, marquee fixtures, players to watch, and quick team breakdowns.</p>
-          <div class="hero-actions">
-            <a class="primary-button" href="#schedule">Open Schedule</a>
-            <a class="ghost-button" href="#teams">Browse Teams</a>
-          </div>
-        </section>
+<nav class="nav">
+  <a class="brand" href="#top">
+    <span class="brand-badge">26</span>
+    <span>World Cup <strong>2026</strong> Guide (ABDUR RAJJAK)</span>
+  </a>
+  <div class="nav-links">
+    <a href="#schedule">Schedule</a>
+    <a href="#groups">Groups</a>
+    <a href="#players">Players to Watch</a>
+    <a href="#watch">How to Watch</a>
+  </div>
+</nav>
 
-        <aside class="match-card" aria-label="Tournament snapshot">
-          <div>
-            <span class="label">Opening Match</span>
-            <strong>Mexico vs South Africa</strong>
-            <span>June 11, 2026 / Estadio Azteca</span>
-          </div>
-          <div class="scoreline">
-            <span>48 teams</span>
-            <span>104 matches</span>
-            <span>16 cities</span>
-          </div>
-        </aside>
+<header class="hero" id="top">
+  <div class="hero-glow"></div>
+  <p class="hero-kicker">USA &middot; Mexico &middot; Canada &mdash; June 11 to July 19, 2026</p>
+  <h1>The Biggest <span class="grad">World Cup</span> Ever.</h1>
+  <p class="hero-sub">48 teams. 104 matches. 16 cities. 3 nations. Your complete guide to every kickoff, every star, and every contender.</p>
+  <div class="countdown" id="countdown"></div>
+  <div class="hero-stats">
+    <div><strong>48</strong><span>Teams</span></div>
+    <div><strong>104</strong><span>Matches</span></div>
+    <div><strong>16</strong><span>Stadiums</span></div>
+    <div><strong>39</strong><span>Days</span></div>
+  </div>
+</header>
+
+<main>
+  <section id="schedule" class="section">
+    <div class="section-head">
+      <h2>Match Calendar <span class="pill">All 104 Matches</span></h2>
+      <p>Tap any date to see that day's matches. Days with matches show a count badge. Kickoff times are shown in Indian Standard Time (IST).</p>
+    </div>
+    <div class="view-toggle">
+      <button id="view-cal" class="active" type="button">&#x1F4C5; Calendar</button>
+      <button id="view-list" type="button">&#x2630; List</button>
+    </div>
+
+    <div id="cal-wrap">
+      <div id="calendar" class="calendar"></div>
+      <div id="day-panel" class="day-panel"></div>
+    </div>
+
+    <div id="list-wrap" class="hidden">
+      <div class="filters">
+        <select id="f-stage" aria-label="Filter by stage"></select>
+        <select id="f-group" aria-label="Filter by group"></select>
+        <select id="f-city" aria-label="Filter by city"></select>
+        <input id="f-search" type="search" placeholder="Search team, stadium, match #..." aria-label="Search matches" />
+        <button id="f-reset" class="btn-ghost" type="button">Reset</button>
       </div>
-    </header>
+      <p class="result-count" id="result-count"></p>
+      <div id="schedule-list" class="schedule-list"></div>
+    </div>
+  </section>
 
-    <main>
-      <section class="quick-strip" aria-label="Tournament quick facts">
-        <div><span>Dates IST</span><strong>June 12 - July 20</strong></div>
-        <div><span>Format</span><strong>12 groups of 4</strong></div>
-        <div><span>Advance</span><strong>Top 2 + best 8 thirds</strong></div>
-        <div><span>Final</span><strong>MetLife Stadium</strong></div>
-      </section>
+  <section id="groups" class="section alt">
+    <div class="section-head">
+      <h2>Group Standings <span class="pill">Groups A&ndash;L</span></h2>
+      <p>Live tournament tables. Click any team to see its full World Cup record: points, wins, goals and every fixture.</p>
+    </div>
+    <div id="groups-grid" class="groups-grid"></div>
+  </section>
 
-      <section class="section" id="schedule">
-        <div class="section-head">
-          <div>
-            <p class="eyebrow">TV + fixture calendar</p>
-            <h2>Click a matchday, see every fixture in IST</h2>
-          </div>
-        </div>
+  <section id="players" class="section">
+    <div class="section-head">
+      <h2>Players to Watch <span class="pill gold">Star Power</span></h2>
+      <p>The names that will define the summer, from generational icons to breakout heroes.</p>
+    </div>
+    <div id="players-grid" class="cards-grid"></div>
+  </section>
 
-        <div class="schedule-shell">
-          <div class="schedule-note">
-            <strong>Indian time guide:</strong> Every kickoff below is shown in IST. Select any matchday to open that day's full fixture details.
-          </div>
-          <div class="calendar-layout">
-            <div class="calendar-months" id="calendarMonths" aria-label="World Cup match calendar"></div>
-            <div class="day-panel">
-              <div class="day-panel-head">
-                <span>Selected Matchday</span>
-                <strong id="selectedDateTitle">June 12, 2026</strong>
-              </div>
-              <div class="schedule-list" id="scheduleList"></div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section split" id="players">
-        <div class="section-head vertical">
-          <p class="eyebrow">Players to watch</p>
-          <h2>Stars, carriers, and chaos-makers</h2>
-          <p class="muted">Built for fast scanning: role, team context, and why the player can tilt a match.</p>
-        </div>
-        <div class="player-grid" id="playerGrid"></div>
-      </section>
-
-      <section class="section" id="teams">
-        <div class="section-head">
-          <div>
-            <p class="eyebrow">Team breakdowns</p>
-            <h2>All 12 groups at a glance</h2>
-          </div>
-          <label class="search">
-            <span>Search</span>
-            <input id="teamSearch" type="search" placeholder="Team or group" />
-          </label>
-        </div>
-        <div class="groups-grid" id="groupsGrid"></div>
-      </section>
-
-      <section class="section watch" id="watch">
+    <section class="section watch" id="watch">
+  <div class="watch-left">
+    <p class="eyebrow">How to watch</p>
+    <h2>Make matchday simple</h2>
+    <p>All 104 matches live in India. Use the calendar to pick a matchday in IST, then confirm exact channel placement with your provider on match week. The guide is designed as a living front page, so rows and channel tags are easy to update as broadcasters finalize assignments.</p>
+    <p class="watch-note">📺 <strong>India broadcast:</strong> Unite8 Sports (Zee's new sports channels) & ZEE5 (streaming). Doordarshan (DD) will carry 8 key matches free-to-air (opening, 4 QFs, 2 semis, final). FIFA+ also available via Eurosport India.</p>
+  </div>
+  <div class="watch-right">
+    <div class="watch-grid">
+      <div class="watch-card">
+        <span class="watch-label">English</span>
+        <strong>FOX / FS1</strong>
+        <small>USA broadcast</small>
+      </div>
+      <div class="watch-card">
+        <span class="watch-label">Indian</span>
+        <strong>Unite8 Sports / ZEE5</strong>
+        <small>India broadcast</small>
+      </div>
+      <div class="watch-card">
+        <span class="watch-label">Indian</span>
+        <strong>Cricfy TV / Epic Sports</strong>
+        <small>Third-party broadcast</small>
+      </div>
+    </div>
+    <div class="watch-extra">
+      <div class="watch-tip">
+        <span>📡</span>
         <div>
-          <p class="eyebrow">How to watch</p>
-          <h2>Make matchday simple</h2>
-          <p>Use the calendar to pick a matchday in Indian time, then confirm exact channel placement with your provider on match week. The guide is designed as a living front page, so rows and channel tags are easy to update as broadcasters finalize assignments.</p>
+          <strong>Doordarshan (Free-to-Air)</strong>
+          <p>8 matches on DD — opening match, 4 quarter-finals, both semi-finals & the final. No subscription needed.</p>
         </div>
-        <div class="watch-grid">
-          <div><span>English</span><strong>FOX / FS1</strong></div>
-          <div><span>Spanish</span><strong>Telemundo / Universo</strong></div>
-          <div><span>Indian</span><strong>ZEE5 / Unite8 Sports</strong></div>
+      </div>
+      <div class="watch-tip">
+        <span>🌐</span>
+        <div>
+          <strong>FIFA+ via Eurosport India</strong>
+          <p>Additional streaming option — select matches & highlights available</p>
         </div>
-      </section>
-    </main>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
 
-    <footer>
-      <p>Fixture and group data checked June 10, 2026. Stadium image: Sebas, CC BY 3.0, via Wikimedia Commons.</p>
-      <div><span>© 2026 Abdur Rajjak · Built with love using HTML, CSS & JS</span></div>
-      <a href="https://commons.wikimedia.org/wiki/File:Interior_view_of_the_MetLife_Stadium_-_ARG_v_CAN_-_2024-07-09.jpg">Image credit</a>
-    </footer>
+<footer class="footer">
+  <p><strong>World Cup 2026 Guide</strong> &mdash; an unofficial fan guide.</p>
+  <p>Created by <strong>Abdur Rajjak</strong>. Data compiled from FIFA's official releases and reputable sports sources.</p>
+  <p class="fine">Fixtures, kickoff times and results shown here are indicative. Always verify with FIFA's official schedule. Not affiliated with FIFA.</p>
+</footer>
 
-    <button class="back-to-top" id="backToTop" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<div id="team-modal" class="modal hidden" role="dialog" aria-modal="true">
+  <div class="modal-card">
+    <button class="modal-close" id="modal-close" aria-label="Close">&times;</button>
+    <div id="modal-body"></div>
+  </div>
+</div>
 
-    <script src="./app.js"></script>
-  </body>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
 </html>
