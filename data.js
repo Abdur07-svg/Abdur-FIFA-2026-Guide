@@ -50,7 +50,7 @@ const TEAM_FLAG_CODE = {
   "Mexico": "mx", "South Africa": "za", "South Korea": "kr", "Czechia": "cz",
   "Canada": "ca", "Bosnia and Herzegovina": "ba", "Qatar": "qa", "Switzerland": "ch",
   "Brazil": "br", "Morocco": "ma", "Haiti": "ht", "Scotland": "gb-sct",
-  "United States": "us", "Paraguay": "py", "Australia": "au", "Turkey": "tr",
+  "United States": "us", "Paraguay": "py", "Australia": "au", "Turkey": "tr", "India": "in",
   "Germany": "de", "Curacao": "cw", "Ivory Coast": "ci", "Ecuador": "ec",
   "Netherlands": "nl", "Japan": "jp", "Sweden": "se", "Tunisia": "tn",
   "Belgium": "be", "Egypt": "eg", "Iran": "ir", "New Zealand": "nz",
@@ -364,4 +364,43 @@ const PLAYERS = [
   { name: "Jamal Musiala", country: "Germany", flagCode: "de", club: "Bayern Munich", pos: "Attacking Mid", blurb: "Slaloming runs and silk-smooth control. Musiala is the creative spark of a German side desperate to erase recent group-stage exits." },
   { name: "Cristiano Ronaldo", country: "Portugal", flagCode: "pt", club: "Al Nassr", pos: "Forward", blurb: "The greatest of all time returns to the World Cup stage with a point to prove. His leadership and goal-scoring prowess make him a nightmare for any defense." },
   { name: "Achraf Hakimi", country: "Morocco", flagCode: "ma", club: "Paris Saint-Germain", pos: "Right-back", blurb: "The world's most devastating attacking full-back leads the 2022 semi-finalists, who believe they can go even further this time." },
+];
+
+const FACTS = [
+  {
+    id: 1,
+    text: "BRAZIL IS THE ONLY NATION TO PLAY EVERY WORLD CUP.",
+    tag: "Eternal",
+    country: "Brazil"
+  },
+  {
+    id: 2,
+    text: "MIROSLAV KLOSE HAS THE MOST WORLD CUP GOALS (16)",
+    tag: "Legend",
+    country: "Germany"
+  },
+  {
+    id: 3,
+    text: "Turkey's Hakan Şükür holds the record for the fastest goal in World Cup history, scoring just 11 seconds into a 2002 match !",
+    tag: "Exclusive",
+    country: "Turkey"
+  },
+  {
+    id: 4,
+    text: "INDIA ONCE QUALIFIED FOR THE 1950 WORLD CUP BUT DIDN'T PARTICIPATE DUE TO FINANCIAL ISSUES",
+    tag: "History",
+    country: "India"
+  },
+  {
+    id: 5,
+    text: "LIONEL MESSI IS THE ONLY PLAYER IN FIFA WORLD CUP HISTORY TO PLAY IN SIX WORLD CUPS, WIN THE WORLD CUP, AND CLAIM THE GOLDEN BALL AWARD TWICE.",
+    tag: "GOAT",
+    country: "Argentina"
+  },
+  {
+    id: 6,
+    text: "MOROCCO BECAME THE FIRST AFRICAN NATION TO REACH A MEN'S WORLD CUP SEMI-FINAL IN 2022.",
+    tag: "Breakthrough",
+    country: "Morocco"
+  }
 ];

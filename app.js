@@ -327,30 +327,58 @@ function renderPlayers() {
     </article>`).join("");
 }
 
- // Hamburger menu
-  const hamburger = document.getElementById('nav-hamburger');
-  const mobileMenu = document.getElementById('nav-mobile-menu');
-  hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('open');
-    mobileMenu.classList.toggle('open');
-  });
-  // Close mobile menu on link click
-  document.querySelectorAll('.mobile-nav-link').forEach(link => {
-    link.addEventListener('click', () => {
-      hamburger.classList.remove('open');
-      mobileMenu.classList.remove('open');
+/* ---------- Facts ---------- */
+function renderFacts() {
+  const grid = $("#facts-grid");
+  if (!grid) return;
+
+  grid.innerHTML = FACTS.map((f, i) => {
+    const flagCode = TEAM_FLAG_CODE[f.country] || 'un';
+    const flagUrl = `https://flagpedia.net/data/flags/h80/${flagCode}.png`;
+    return `
+      <div class="fact-card" style="transition-delay: ${i * 100}ms; --fact-flag: url('${flagUrl}')">
+        <div class="fact-num">${f.id}</div>
+        <span class="fact-tag">${esc(f.tag)}</span>
+        <p class="fact-text">${esc(f.text)}</p>
+      </div>
+    `;
+  }).join("");
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("reveal");
+        observer.unobserve(entry.target);
+      }
     });
-  });
+  }, { threshold: 0.1 });
 
-  // Back to top
-  const btt = document.getElementById('back-to-top');
-  window.addEventListener('scroll', () => {
-    btt.classList.toggle('visible', window.scrollY > 300);
-  });
-  btt.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
+  document.querySelectorAll(".fact-card").forEach(card => observer.observe(card));
+}
 
+// Hamburger menu
+const hamburger = document.getElementById('nav-hamburger');
+const mobileMenu = document.getElementById('nav-mobile-menu');
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('open');
+  mobileMenu.classList.toggle('open');
+});
+// Close mobile menu on link click
+document.querySelectorAll('.mobile-nav-link').forEach(link => {
+  link.addEventListener('click', () => {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+  });
+});
+
+// Back to top
+const btt = document.getElementById('back-to-top');
+window.addEventListener('scroll', () => {
+  btt.classList.toggle('visible', window.scrollY > 300);
+});
+btt.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
 
 /* ---------- Init ---------- */
 renderCountdown();
@@ -361,4 +389,4 @@ renderSchedule();
 renderGroups();
 initModal();
 renderPlayers();
-renderVenues();
+renderFacts();
