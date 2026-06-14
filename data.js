@@ -74,7 +74,8 @@ function flagOf(team) {
 }
 
 /* ===== RESULTS =====
-   Update as tournament progresses. Format: matchNo: [homeGoals, awayGoals] */
+   Update as tournament progresses. Format: matchNo: [homeGoals, awayGoals]
+   Knockout penalties can be added as: matchNo: [homeGoals, awayGoals, homePens, awayPens] */
 const RESULTS = {
   1: [2, 0],
   2: [2, 1],
@@ -138,7 +139,7 @@ const KO_PLAN = [
   ["2026-07-10", "Quarter-final", "Winner Match 91", "Winner Match 92", "LA", "15:00"],
   ["2026-07-11", "Quarter-final", "Winner Match 93", "Winner Match 94", "MIA", "17:00"],
   ["2026-07-11", "Quarter-final", "Winner Match 95", "Winner Match 96", "KC", "21:00"],
-  ["2026-07-14", "Semi-final", "Winner Match 101", "Winner Match 102", "DAL", "15:00"],
+  ["2026-07-14", "Semi-final", "Winner Match 97", "Winner Match 98", "DAL", "15:00"],
   ["2026-07-15", "Semi-final", "Winner Match 99", "Winner Match 100", "ATL", "15:00"],
   ["2026-07-18", "Third-place Match", "Loser Match 101", "Loser Match 102", "MIA", "17:00"],
   ["2026-07-19", "Final", "Winner Match 101", "Winner Match 102", "NYC", "15:00"]
@@ -175,25 +176,177 @@ function toISTDateTime(date, time, venue) {
   return { istDate, istTime, istFullDateTime };
 }
 
+function groupStandingsForKnockout() {
+  const table = {};
+  Object.entries(GROUPS).forEach(([g, teams]) => {
+    teams.forEach((team) => {
+      table[team] = { team, group: g, p: 0, w: 0, d: 0, l: 0, gf: 0, ga: 0, pts: 0 };
+    });
+  });
+
+  GS_PLAN.forEach(([, fixtures], dayIndex) => {
+    fixtures.forEach(([g, slot], fixtureIndex) => {
+      const matchNo = GS_PLAN.slice(0, dayIndex).reduce((sum, [, dayFixtures]) => sum + dayFixtures.length, 0) + fixtureIndex + 1;
+      const result = RESULTS[matchNo];
+      if (!result) return;
+
+      const [homeIndex, awayIndex] = PAIRS[slot];
+      const home = GROUPS[g][homeIndex];
+      const away = GROUPS[g][awayIndex];
+      const [hg, ag] = result;
+      const H = table[home];
+      const A = table[away];
+
+      H.p++; A.p++;
+      H.gf += hg; H.ga += ag;
+      A.gf += ag; A.ga += hg;
+      if (hg > ag) { H.w++; H.pts += 3; A.l++; }
+      else if (hg < ag) { A.w++; A.pts += 3; H.l++; }
+      else { H.d++; A.d++; H.pts++; A.pts++; }
+    });
+  });
+
+  return table;
+}
+
+function compareTeamsForKnockout(a, b) {
+  return b.pts - a.pts ||
+    (b.gf - b.ga) - (a.gf - a.ga) ||
+    b.gf - a.gf ||
+    a.team.localeCompare(b.team);
+}
+
+function rankedGroupForKnockout(table, group) {
+  return GROUPS[group].map((team) => table[team]).sort(compareTeamsForKnockout);
+}
+
+function bestThirdSlotAssignment(slots, bestThird) {
+  const orderedSlots = [...slots].sort((a, b) => {
+    const aCount = bestThird.filter((team) => a.allowedGroups.includes(team.group)).length;
+    const bCount = bestThird.filter((team) => b.allowedGroups.includes(team.group)).length;
+    return aCount - bCount;
+  });
+  const usedGroups = new Set();
+  const assignment = {};
+
+  function place(index) {
+    if (index === orderedSlots.length) return true;
+    const slot = orderedSlots[index];
+    for (const team of bestThird) {
+      if (!slot.allowedGroups.includes(team.group) || usedGroups.has(team.group)) continue;
+      assignment[slot.label] = team;
+      usedGroups.add(team.group);
+      if (place(index + 1)) return true;
+      usedGroups.delete(team.group);
+      delete assignment[slot.label];
+    }
+    return false;
+  }
+
+  return place(0) ? assignment : {};
+}
+
+function knockoutSeedMap() {
+  const table = groupStandingsForKnockout();
+  const seeds = {};
+  const thirdPlaced = [];
+
+  Object.keys(GROUPS).forEach((group) => {
+    const ranked = rankedGroupForKnockout(table, group);
+    if (ranked.every((team) => team.p === 3)) {
+      seeds[`Winner Group ${group}`] = ranked[0].team;
+      seeds[`Runner-up Group ${group}`] = ranked[1].team;
+      thirdPlaced.push(ranked[2]);
+    }
+  });
+
+  const bestThird = thirdPlaced
+    .filter((team) => team.p === 3)
+    .sort(compareTeamsForKnockout)
+    .slice(0, 8);
+
+  const bestThirdSlots = [];
+  KO_PLAN.forEach(([, , home, away]) => {
+    [home, away].forEach((label) => {
+      const match = label.match(/^Best 3rd-placed \(([^)]+)\)$/);
+      if (match && !bestThirdSlots.some((slot) => slot.label === label)) {
+        bestThirdSlots.push({
+          label,
+          allowedGroups: match[1].split("/").map((group) => group.trim())
+        });
+      }
+    });
+  });
+
+  const bestThirdSeeds = bestThirdSlotAssignment(bestThirdSlots, bestThird);
+  Object.entries(bestThirdSeeds).forEach(([label, team]) => {
+    seeds[label] = team.team;
+  });
+
+  return seeds;
+}
+
+function winnerLoserFromResult(match, pick) {
+  const result = RESULTS[match.no];
+  if (!result) return null;
+  let homeWon = result[0] > result[1];
+  if (result[0] === result[1]) {
+    if (result.length < 4 || result[2] === result[3]) return null;
+    homeWon = result[2] > result[3];
+  }
+  if (pick === "Winner") return homeWon ? match.home : match.away;
+  return homeWon ? match.away : match.home;
+}
+
+function resolveKnockoutTeam(label, seeds, matchesByNo) {
+  if (seeds[label]) return seeds[label];
+
+  const match = label.match(/^(Winner|Loser) Match (\d+)$/);
+  if (!match) return label;
+
+  const source = matchesByNo[Number(match[2])];
+  if (!source) return label;
+
+  return winnerLoserFromResult(source, match[1]) || label;
+}
+
 /* Build all 104 matches */
 function buildMatches() {
   const matches = [];
+  const matchesByNo = {};
+  const seeds = knockoutSeedMap();
   let n = 1;
   GS_PLAN.forEach(([date, fixtures]) => {
     fixtures.forEach(([g, slot, venue, time]) => {
       const [a, b] = PAIRS[slot];
       const { istDate, istTime, istFullDateTime } = toISTDateTime(date, time, venue);
-      matches.push({
+      const match = {
         no: n++, date: date, time: time, istDate: istDate, istTime: istTime, istFullDateTime: istFullDateTime, venue,
         stage: "Group Stage", group: g,
         home: GROUPS[g][a], away: GROUPS[g][b],
         matchday: slot < 2 ? 1 : slot < 4 ? 2 : 3
-      });
+      };
+      matches.push(match);
+      matchesByNo[match.no] = match;
     });
   });
   KO_PLAN.forEach(([date, stage, home, away, venue, time]) => {
     const { istDate, istTime, istFullDateTime } = toISTDateTime(date, time, venue);
-    matches.push({ no: n++, date: date, time: time, istDate: istDate, istTime: istTime, istFullDateTime: istFullDateTime, venue, stage, group: null, home, away });
+    const match = {
+      no: n++,
+      date: date,
+      time: time,
+      istDate: istDate,
+      istTime: istTime,
+      istFullDateTime: istFullDateTime,
+      venue,
+      stage,
+      group: null,
+      home: resolveKnockoutTeam(home, seeds, matchesByNo),
+      away: resolveKnockoutTeam(away, seeds, matchesByNo)
+    };
+    matches.push(match);
+    matchesByNo[match.no] = match;
   });
   return matches;
 }
