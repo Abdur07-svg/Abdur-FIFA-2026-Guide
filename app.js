@@ -183,6 +183,80 @@ function initViewToggle() {
   });
 }
 
+/* ---------- Best Third-Place Teams ---------- */
+function renderBestThird() {
+  const table = computeStandings();
+  const thirdPlaced = [];
+
+  Object.keys(GROUPS).forEach((g) => {
+    const ranked = sortedGroup(table, g);
+    // Only include groups where all teams have played at least 1 match
+    if (ranked[2]) {
+      thirdPlaced.push({ ...ranked[2], rank: 3 });
+    }
+  });
+
+  // Sort using same criteria as group standings
+  thirdPlaced.sort((a, b) =>
+    b.pts - a.pts || (b.gf - b.ga) - (a.gf - a.ga) || b.gf - a.gf || a.team.localeCompare(b.team)
+  );
+
+  const wrap = $("#best-third-table-wrap");
+  if (!wrap) return;
+
+  // If no teams have played yet, show placeholder
+  if (thirdPlaced.every((t) => t.p === 0)) {
+    wrap.innerHTML = '<p style="color:var(--muted);text-align:center;padding:20px;">Standings will appear once group matches begin.</p>';
+    return;
+  }
+
+  wrap.innerHTML = `
+    <table class="group-table best-third-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th class="tname">Team</th>
+          <th>Group</th>
+          <th>P</th>
+          <th>W</th>
+          <th>D</th>
+          <th>L</th>
+          <th>GD</th>
+          <th>Pts</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${thirdPlaced.map((s, i) => {
+          const qualified = i < 8;
+          const statusClass = qualified ? "bt-qualified" : "bt-eliminated";
+          return `
+            <tr class="team-row ${statusClass}" data-team="${esc(s.team)}" title="View ${esc(s.team)} stats">
+              <td>${i + 1}</td>
+              <td class="tname">
+                <span class="team-label">
+                  ${flagImgOf(s.team, 22)}
+                  <span>${esc(s.team)}</span>
+                </span>
+              </td>
+              <td><span class="bt-group-badge">${s.group}</span></td>
+              <td>${s.p}</td>
+              <td>${s.w}</td>
+              <td>${s.d}</td>
+              <td>${s.l}</td>
+              <td>${s.gf - s.ga > 0 ? "+" : ""}${s.gf - s.ga}</td>
+              <td class="pts">${s.pts}</td>
+            </tr>`;
+        }).join("")}
+      </tbody>
+    </table>
+    <p class="bt-footnote">Top 8 third-placed teams advance to the Round of 32. Tie-breaking: Points → Goal Difference → Goals Scored.</p>`;
+
+  // Make rows clickable for team modal
+  wrap.querySelectorAll(".team-row").forEach((row) => {
+    row.addEventListener("click", () => openTeamModal(row.dataset.team));
+  });
+}
+
 /* ---------- Standings ---------- */
 function computeStandings() {
   const table = {};
@@ -387,6 +461,7 @@ initFilters();
 initViewToggle();
 renderSchedule();
 renderGroups();
+renderBestThird();
 initModal();
 renderPlayers();
 renderFacts();
