@@ -278,9 +278,17 @@ function computeStandings() {
 }
 
 function sortedGroup(table, g) {
-  return GROUPS[g].map((t) => table[t]).sort((a, b) =>
-    b.pts - a.pts || (b.gf - b.ga) - (a.gf - a.ga) || b.gf - a.gf || a.team.localeCompare(b.team)
-  );
+  const teams = GROUPS[g].map((t, idx) => ({ team: t, idx, stats: table[t] }));
+  teams.sort((a, b) => {
+    const aStats = a.stats;
+    const bStats = b.stats;
+    // Sort by: Points (desc), GD (desc), GF (desc), original index (asc)
+    if (bStats.pts !== aStats.pts) return bStats.pts - aStats.pts;
+    if ((bStats.gf - bStats.ga) !== (aStats.gf - aStats.ga)) return (bStats.gf - bStats.ga) - (aStats.gf - aStats.ga);
+    if (bStats.gf !== aStats.gf) return bStats.gf - aStats.gf;
+    return a.idx - b.idx;
+  });
+  return teams.map(t => t.stats);
 }
 
 function renderGroups() {
