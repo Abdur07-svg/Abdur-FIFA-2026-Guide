@@ -15,7 +15,13 @@ function renderCountdown() {
     return;
   }
   if (now > FINAL_END) {
-    el.innerHTML = '<div class="cd-live">🏆 The 2026 World Cup is complete. What a tournament!</div>';
+    const finalMatch = MATCHES[MATCHES.length - 1];
+    const winner = typeof winnerLoserFromResult === 'function' ? winnerLoserFromResult(finalMatch, "Winner") : null;
+    if (winner) {
+      el.innerHTML = `<div class="cd-live">🏆 <strong>${esc(winner)}</strong> are the 2026 World Cup Champions!</div>`;
+    } else {
+      el.innerHTML = '<div class="cd-live">🏆 The 2026 World Cup is complete. What a tournament!</div>';
+    }
     return;
   }
   const diff = KICKOFF - now;
@@ -284,8 +290,10 @@ function sortedGroup(table, g) {
 }
 
 function renderGroups() {
+  const grid = $("#groups-grid");
+  if (!grid) return;
   const table = computeStandings();
-  $("#groups-grid").innerHTML = Object.keys(GROUPS).map((g) => `
+  grid.innerHTML = Object.keys(GROUPS).map((g) => `
     <article class="group-card">
       <h3>Group ${g}</h3>
       <table class="group-table">
@@ -308,7 +316,7 @@ function renderGroups() {
       </table>
     </article>`).join("");
 
-  $("#groups-grid").addEventListener("click", (e) => {
+  grid.addEventListener("click", (e) => {
     const row = e.target.closest(".team-row");
     if (row) openTeamModal(row.dataset.team);
   });
@@ -384,7 +392,9 @@ function initModal() {
 
 /* ---------- Players ---------- */
 function renderPlayers() {
-  $("#players-grid").innerHTML = PLAYERS.map((p) => `
+  const grid = $("#players-grid");
+  if (!grid) return;
+  grid.innerHTML = PLAYERS.map((p) => `
     <article class="player-card">
       <div class="player-top">
         <span class="player-flag-wrap">${flagImgOf(p.country, 36)}</span>
@@ -433,33 +443,37 @@ function renderFacts() {
 // Hamburger menu
 const hamburger = document.getElementById('nav-hamburger');
 const mobileMenu = document.getElementById('nav-mobile-menu');
-hamburger.addEventListener('click', () => {
-  hamburger.classList.toggle('open');
-  mobileMenu.classList.toggle('open');
-});
-// Close mobile menu on link click
-document.querySelectorAll('.mobile-nav-link').forEach(link => {
-  link.addEventListener('click', () => {
-    hamburger.classList.remove('open');
-    mobileMenu.classList.remove('open');
+if (hamburger && mobileMenu) {
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
   });
-});
+  // Close mobile menu on link click
+  document.querySelectorAll('.mobile-nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+    });
+  });
+}
 
 // Back to top
 const btt = document.getElementById('back-to-top');
-window.addEventListener('scroll', () => {
-  btt.classList.toggle('visible', window.scrollY > 300);
-});
-btt.addEventListener('click', () => {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-});
+if (btt) {
+  window.addEventListener('scroll', () => {
+    btt.classList.toggle('visible', window.scrollY > 300);
+  });
+  btt.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
 
 /* ---------- Init ---------- */
-renderCountdown();
-initCalendar();
-initFilters();
-initViewToggle();
-renderSchedule();
+if ($("#countdown")) renderCountdown();
+if ($("#calendar")) initCalendar();
+if ($("#f-stage")) initFilters();
+if ($("#view-cal")) initViewToggle();
+if ($("#f-stage")) renderSchedule();
 renderGroups();
 renderBestThird();
 initModal();

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>FIFA World Cup 2026 Guide | Players to Watch</title>
+<meta name="description" content="Players to watch across USA, Mexico and Canada." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<link rel="stylesheet" href="style.css">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png">
+<link rel="icon" type="image/png" sizes="192x192" href="images/favicon-192.png">
+<link rel="apple-touch-icon" href="images/favicon-180.png">
+<meta name="theme-color" content="#0a0a0a">
+</head>
+<body>
+
+<nav class="nav">
+  <a class="brand" href="index.html#top">
+    <span class="brand-badge">26</span>
+    <span>World Cup <strong>2026</strong> Guide</span>
+  </a>
+  <div class="nav-links">
+    <a href="index.html#schedule">Schedule</a>
+    <a href="groups.html">Groups</a>
+    <a href="players.html">Players</a>
+    <a href="facts.html">Facts</a>
+    <a href="index.html#watch">How to Watch</a>
+  </div>
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" type="button">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="nav-mobile-menu" id="nav-mobile-menu">
+  <a href="index.html#schedule" class="mobile-nav-link">Schedule</a>
+  <a href="groups.html" class="mobile-nav-link">Groups</a>
+  <a href="players.html" class="mobile-nav-link">Players to Watch</a>
+  <a href="facts.html" class="mobile-nav-link">World Cup Facts</a>
+  <a href="index.html#watch" class="mobile-nav-link">How to Watch</a>
+</div>
+
+<main style="padding-top: 40px;">
+  <section id="players" class="section">
+    <div class="section-head">
+      <h2>Players to Watch <span class="pill gold">Star Power</span></h2>
+      <p>The names that will define the summer, from generational icons to breakout heroes.</p>
+    </div>
+    <div id="players-grid" class="cards-grid"></div>
+  </section>
+</main>
+
+<footer class="footer">
+  <p><strong>World Cup 2026 Guide</strong> &mdash; an unofficial fan guide.</p>
+  <p>Created by <strong>Abdur Rajjak</strong>. Data compiled from FIFA's official releases and reputable sports sources.</p>
+  <p class="fine">Fixtures, kickoff times and results shown here are indicative. Always verify with FIFA's official schedule. Not affiliated with FIFA.</p>
+</footer>
+
+<div id="team-modal" class="modal hidden" role="dialog" aria-modal="true">
+  <div class="modal-card">
+    <button class="modal-close" id="modal-close" aria-label="Close">&times;</button>
+    <div id="modal-body"></div>
+  </div>
+</div>
+
+<button class="back-to-top" id="back-to-top" aria-label="Back to top">&#8679;</button>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
