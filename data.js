@@ -86,7 +86,7 @@ const RESULTS = {
   61: [1, 4], 62: [5, 0], 63: [0, 0], 64: [0, 1], 65: [1, 5], 66: [1, 1], 67: [0, 2], 68: [2, 1], 69: [0, 0], 70: [3, 1],
   71: [3, 3], 72: [1, 3],
   73: [0, 1], 74: [2, 1], 75: [1, 1, 3, 4], 76: [1, 1, 2, 3], 77: [1, 2], 78: [3, 0], 79: [2, 0], 80: [2, 1], 81: [3, 2],
-  82: [2, 0], 83: [3, 0], 84: [2, 1], 85: [2, 0]
+  82: [2, 0], 83: [3, 0], 84: [2, 1], 85: [2, 0], 86: [1, 1, 2, 4], 87: [3, 2], 88: [1, 0],
 };
 
 const PAIRS = [[0, 1], [2, 3], [0, 2], [3, 1], [3, 0], [1, 2]];
@@ -130,12 +130,12 @@ const KO_PLAN = [
   ["2026-07-03", "Round of 32", "Runner-up Group D", "Runner-up Group G", "DAL", "13:00"],
   ["2026-07-03", "Round of 32", "Winner Group J", "Runner-up Group H", "MIA", "18:00"],
   ["2026-07-03", "Round of 32", "Winner Group K", "Best 3rd-placed (D/E/I/J/L)", "KC", "20:30"],
-  ["2026-07-04", "Round of 16", "Winner Match 75", "Winner Match 78", "HOU", "12:00"],
-  ["2026-07-04", "Round of 16", "Winner Match 73", "Winner Match 76", "PHI", "17:00"],
+  ["2026-07-04", "Round of 16", "Winner Match 73", "Winner Match 76", "HOU", "12:00"],
+  ["2026-07-04", "Round of 16", "Winner Match 75", "Winner Match 78", "PHI", "17:00"],
   ["2026-07-05", "Round of 16", "Winner Match 74", "Winner Match 77", "NYC", "16:00"],
   ["2026-07-05", "Round of 16", "Winner Match 79", "Winner Match 80", "AZT", "19:00"],
-  ["2026-07-06", "Round of 16", "Winner Match 83", "Winner Match 84", "DAL", "14:00"],
-  ["2026-07-06", "Round of 16", "Winner Match 81", "Winner Match 82", "SEA", "17:00"],
+  ["2026-07-06", "Round of 16", "Winner Match 84", "Winner Match 83", "DAL", "14:00"],
+  ["2026-07-06", "Round of 16", "Winner Match 82", "Winner Match 81", "SEA", "17:00"],
   ["2026-07-07", "Round of 16", "Winner Match 87", "Winner Match 86", "ATL", "12:00"],
   ["2026-07-07", "Round of 16", "Winner Match 85", "Winner Match 88", "VAN", "13:00"],
   ["2026-07-09", "Quarter-final", "Winner Match 89", "Winner Match 90", "BOS", "16:00"],
