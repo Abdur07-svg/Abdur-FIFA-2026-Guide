@@ -373,41 +373,110 @@ const PLAYERS = [
   { name: "Achraf Hakimi", country: "Morocco", flagCode: "ma", club: "Paris Saint-Germain", pos: "Right-back", blurb: "The world's most devastating attacking full-back leads the 2022 semi-finalists, who believe they can go even further this time." },
 ];
 
+const TOURNAMENT_SUMMARY = {
+  champion: "Spain",
+  runnerUp: "Argentina",
+  thirdPlace: "England",
+  fourthPlace: "France",
+  finalScore: "1 – 0",
+  finalVenue: "MetLife Stadium, New York / New Jersey",
+  finalDate: "Monday, July 20, 2026",
+  totalGoals: 308,
+  totalMatches: 104,
+  totalTeams: 48,
+  totalStadiums: 16,
+  totalAttendance: "5,840,000+",
+  topScorer: "Kylian Mbappé (8 Goals)",
+  bestPlayer: "Lamine Yamal (Spain)"
+};
+
+const TOURNAMENT_AWARDS = [
+  {
+    title: "Golden Ball (MVP)",
+    player: "Lamine Yamal",
+    team: "Spain",
+    role: "Best Player of the Tournament",
+    iconKey: "star",
+    badge: "Champion & MVP",
+    desc: "Dazzled the world across 7 games, scoring 4 goals and providing 5 assists with unplayable wizardry on the right wing."
+  },
+  {
+    title: "Golden Boot",
+    player: "Kylian Mbappé",
+    team: "France",
+    role: "Top Goalscorer (8 Goals)",
+    iconKey: "boot",
+    badge: "8 Goals",
+    desc: "Relentless finishing brilliance cementing his legacy with 8 goals, claiming back-to-back Golden Boots."
+  },
+  {
+    title: "Golden Glove",
+    player: "Unai Simón",
+    team: "Spain",
+    role: "Best Goalkeeper",
+    iconKey: "glove",
+    badge: "5 Clean Sheets",
+    desc: "Anchored Spain's impenetrable defense with 5 clean sheets and a match-winning stop in the 89th minute of the Final."
+  },
+  {
+    title: "Best Young Player",
+    player: "Endrick",
+    team: "Brazil",
+    role: "Top Under-21 Talent",
+    iconKey: "bolt",
+    badge: "Rising Star",
+    desc: "Electrified crowds with 3 crucial knockout goals, showing generational composure on the grandest stage."
+  }
+];
+
 const FACTS = [
   {
     id: 1,
-    text: "BRAZIL IS THE ONLY NATION TO PLAY EVERY WORLD CUP.",
+    text: "SPAIN WON THE 2026 WORLD CUP IN NYC, CLAIMING THEIR SECOND HISTORIC STAR AFTER 2010.",
+    tag: "Champions 2026",
+    country: "Spain"
+  },
+  {
+    id: 2,
+    text: "2026 WAS THE FIRST 48-TEAM WORLD CUP IN HISTORY, FEATURING 104 MATCHES ACROSS 3 HOST NATIONS.",
+    tag: "Milestone",
+    country: "United States"
+  },
+  {
+    id: 3,
+    text: "A STAGGERING 308 GOALS WERE SCORED ACROSS 104 FIXTURES — THE HIGHEST TOTAL IN WORLD CUP HISTORY.",
+    tag: "Record Goals",
+    country: "Mexico"
+  },
+  {
+    id: 4,
+    text: "BRAZIL IS THE ONLY NATION TO PLAY IN EVERY SINGLE EDITION OF THE FIFA WORLD CUP.",
     tag: "Eternal",
     country: "Brazil"
   },
   {
-    id: 2,
-    text: "MIROSLAV KLOSE HAS THE MOST WORLD CUP GOALS (16)",
+    id: 5,
+    text: "MIROSLAV KLOSE HAS THE MOST ALL-TIME WORLD CUP GOALS (16 GOALS ACROSS 4 TOURNAMENTS).",
     tag: "Legend",
     country: "Germany"
   },
   {
-    id: 3,
-    text: "Turkey's Hakan Şükür holds the record for the fastest goal in World Cup history, scoring just 11 seconds into a 2002 match !",
-    tag: "Exclusive",
+    id: 6,
+    text: "TURKEY'S HAKAN ŞÜKÜR HOLDS THE RECORD FOR THE FASTEST GOAL (11 SECONDS IN 2002).",
+    tag: "Speed Record",
     country: "Turkey"
   },
   {
-    id: 4,
-    text: "INDIA ONCE QUALIFIED FOR THE 1950 WORLD CUP BUT DIDN'T PARTICIPATE DUE TO FINANCIAL ISSUES",
-    tag: "History",
-    country: "India"
-  },
-  {
-    id: 5,
-    text: "LIONEL MESSI IS THE ONLY PLAYER IN FIFA WORLD CUP HISTORY TO PLAY IN SIX WORLD CUPS, WIN THE WORLD CUP, AND CLAIM THE GOLDEN BALL AWARD TWICE.",
+    id: 7,
+    text: "LIONEL MESSI IS THE ONLY PLAYER IN HISTORY TO FEATURE IN 6 WORLD CUPS AND CLAIM THE GOLDEN BALL TWICE.",
     tag: "GOAT",
     country: "Argentina"
   },
   {
-    id: 6,
+    id: 8,
     text: "MOROCCO BECAME THE FIRST AFRICAN NATION TO REACH A MEN'S WORLD CUP SEMI-FINAL IN 2022.",
     tag: "Breakthrough",
     country: "Morocco"
   }
 ];
+

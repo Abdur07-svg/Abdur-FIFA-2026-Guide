@@ -3,69 +3,77 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>FIFA World Cup 2026 Guide | Facts</title>
-<meta name="description" content="World Cup historical records and trivia." />
+<title>FIFA World Cup 2026 Archive | Historic Records & Facts</title>
+<meta name="description" content="Historic World Cup Records & 2026 Milestones: Spain's 2nd star, 308 tournament goals, 48-nation expansion, and all-time records. Curated by Abdur Rajjak." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="styles.css" />
-<link rel="stylesheet" href="style.css">
 <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png">
 <link rel="icon" type="image/png" sizes="192x192" href="images/favicon-192.png">
 <link rel="apple-touch-icon" href="images/favicon-180.png">
-<meta name="theme-color" content="#0a0a0a">
+<meta name="theme-color" content="#0a0f1e">
 </head>
 <body>
 
 <nav class="nav">
   <a class="brand" href="index.html#top">
     <span class="brand-badge">26</span>
-    <span>World Cup <strong>2026</strong> Guide</span>
+    <span>World Cup <strong>2026</strong> Archive</span>
   </a>
   <div class="nav-links">
-    <a href="index.html#schedule">Schedule</a>
-    <a href="groups.html">Table</a>
-    <a href="players.html">Players</a>
-    <a href="facts.html">Facts</a>
-    <a href="index.html#watch">How to Watch</a>
+    <a href="index.html#champion">Champions</a>
+    <a href="index.html#awards">Awards</a>
+    <a href="index.html#schedule">104 Matches</a>
+    <a href="groups.html">Final Table</a>
+    <a href="players.html">Stars</a>
+    <a href="facts.html" style="color:var(--text);font-weight:700;">Records</a>
+    <a href="index.html#creator">Creator</a>
   </div>
   <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" type="button">
     <span></span><span></span><span></span>
   </button>
 </nav>
+
 <div class="nav-mobile-menu" id="nav-mobile-menu">
-  <a href="index.html#schedule" class="mobile-nav-link">Schedule</a>
-  <a href="groups.html" class="mobile-nav-link">Table</a>
-  <a href="players.html" class="mobile-nav-link">Players to Watch</a>
-  <a href="facts.html" class="mobile-nav-link">World Cup Facts</a>
-  <a href="index.html#watch" class="mobile-nav-link">How to Watch</a>
+  <a href="index.html#champion" class="mobile-nav-link">Champions &amp; Podium</a>
+  <a href="index.html#awards" class="mobile-nav-link">Tournament Awards</a>
+  <a href="index.html#schedule" class="mobile-nav-link">104 Match Archive</a>
+  <a href="groups.html" class="mobile-nav-link">Final Group Table</a>
+  <a href="players.html" class="mobile-nav-link">Tournament Stars</a>
+  <a href="facts.html" class="mobile-nav-link">World Cup Records</a>
+  <a href="index.html#creator" class="mobile-nav-link">About the Creator</a>
 </div>
 
 <main style="padding-top: 40px;">
   <section id="facts" class="section alt">
     <div class="section-head">
-      <h2>World Cup Facts <span class="pill">Sound Fake, But True</span></h2>
-      <p>Mind-blowing historical records and trivia from the greatest tournament on Earth.</p>
+      <h2>World Cup Records &amp; 2026 Milestones <span class="pill gold">Historic Vault</span></h2>
+      <p>Unforgettable historical achievements, 2026 record-breakers, and legendary trivia from the greatest tournament on Earth.</p>
     </div>
     <div id="facts-grid" class="facts-grid"></div>
   </section>
 </main>
 
 <footer class="footer">
-  <p><strong>World Cup 2026 Guide</strong> &mdash; an unofficial fan guide.</p>
-  <p>Created by <strong>Abdur Rajjak</strong>. Data compiled from FIFA's official releases and reputable sports sources.</p>
-  <p class="fine">Fixtures, kickoff times and results shown here are indicative. Always verify with FIFA's official schedule. Not affiliated with FIFA.</p>
+  <p><strong>World Cup 2026 Tournament Archive</strong> &mdash; an unofficial fan project.</p>
+  <p>Created by <strong>Abdur Rajjak</strong>. Data compiled from FIFA's official releases and verified sporting records.</p>
+  <p class="fine">All matches and tournament results shown are archived from the 2026 FIFA World Cup. Not affiliated with FIFA.</p>
 </footer>
 
 <div id="team-modal" class="modal hidden" role="dialog" aria-modal="true">
   <div class="modal-card">
-    <button class="modal-close" id="modal-close" aria-label="Close">&times;</button>
+    <button class="modal-close" id="modal-close" aria-label="Close">
+      <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    </button>
     <div id="modal-body"></div>
   </div>
 </div>
 
-<button class="back-to-top" id="back-to-top" aria-label="Back to top">&#8679;</button>
+<button class="back-to-top" id="back-to-top" aria-label="Back to top">
+  <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
+</button>
 
 <script src="data.js"></script>
 <script src="app.js"></script>

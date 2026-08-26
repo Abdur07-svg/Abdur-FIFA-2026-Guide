@@ -3,68 +3,217 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>FIFA World Cup 2026 Guide | Schedule, Groups & Players</title>
-<meta name="description" content="Complete FIFA World Cup 2026 guide: calendar of all 104 matches, live group standings and players to watch across USA, Mexico and Canada." />
+<title>FIFA World Cup 2026 Archive | Champions, Schedule, Tables & Awards</title>
+<meta name="description" content="Complete FIFA World Cup 2026 Tournament Archive: Spain's championship victory, all 104 match results, final tables, and tournament awards. Created by Abdur Rajjak." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="styles.css" />
-<link rel="stylesheet" href="style.css">
 <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png">
 <link rel="icon" type="image/png" sizes="192x192" href="images/favicon-192.png">
 <link rel="apple-touch-icon" href="images/favicon-180.png">
-<meta name="theme-color" content="#0a0a0a">
+<meta name="theme-color" content="#0a0f1e">
 </head>
 <body>
+
+<canvas id="confetti-canvas" class="confetti-canvas"></canvas>
 
 <nav class="nav">
   <a class="brand" href="#top">
     <span class="brand-badge">26</span>
-    <span>World Cup <strong>2026</strong> Guide</span>
+    <span>World Cup <strong>2026</strong> Archive</span>
   </a>
   <div class="nav-links">
-    <a href="index.html#schedule">Schedule</a>
-    <a href="groups.html">Table</a>
-    <a href="players.html">Players</a>
-    <a href="facts.html">Facts</a>
-    <a href="index.html#watch">How to Watch</a>
+    <a href="#champion">Champions</a>
+    <a href="groups.html">Final Table</a>
+    <a href="players.html">Stars</a>
+    <a href="facts.html">Records</a>
+    <a href="#creator">Creator</a>
   </div>
   <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" type="button">
     <span></span><span></span><span></span>
   </button>
 </nav>
+
 <div class="nav-mobile-menu" id="nav-mobile-menu">
-  <a href="index.html#schedule" class="mobile-nav-link">Schedule</a>
-  <a href="groups.html" class="mobile-nav-link">Table</a>
-  <a href="players.html" class="mobile-nav-link">Players to Watch</a>
-  <a href="facts.html" class="mobile-nav-link">World Cup Facts</a>
-  <a href="index.html#watch" class="mobile-nav-link">How to Watch</a>
+  <a href="#champion" class="mobile-nav-link">Champions &amp; Podium</a>
+  <a href="groups.html" class="mobile-nav-link">Final Group Table</a>
+  <a href="players.html" class="mobile-nav-link">Tournament Stars</a>
+  <a href="facts.html" class="mobile-nav-link">World Cup Records</a>
+  <a href="#creator" class="mobile-nav-link">About the Creator</a>
 </div>
 
 <header class="hero" id="top">
   <div class="hero-glow"></div>
-  <p class="hero-kicker">USA &middot; Mexico &middot; Canada &mdash; June 12 to July 20, 2026</p>
-  <h1>The Biggest <span class="grad">World Cup</span> Ever.</h1>
-  <p class="hero-sub">48 teams. 104 matches. 16 cities. 3 nations. Your complete guide to every kickoff, every star, and every contender, on the website created by —<p><span class="grad">Abdur Rajjak</span>.</p></p>
-  <div class="countdown" id="countdown"></div>
+  
+  <div class="concluded-badge">
+    <svg class="svg-icon gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path>
+      <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path>
+      <path d="M4 22h16"></path>
+      <path d="M10 14.66V17c0 .55-.45 1-1 1H8c-.55 0-1 .45-1 1v1c0 .55.45 1 1 1h8c.55 0 1-.45 1-1v-1c0-.55-.45-1-1-1h-1c-.55 0-1-.45-1-1v-2.34"></path>
+      <path d="M6 4h12a2 2 0 0 1 2 2v3a6 6 0 0 1-6 6h-4a6 6 0 0 1-6-6V6a2 2 0 0 1 2-2Z"></path>
+    </svg>
+    <span>Tournament Concluded &middot; July 20, 2026</span>
+  </div>
+
+  <h1>The Historic 2026 World Cup <span class="grad">Concluded</span>.</h1>
+  <p class="hero-sub">
+    48 teams battled across 104 matches in USA, Mexico &amp; Canada. Explore the official tournament archive, Spain's historic triumph, awards, and records curated by <span class="grad">Abdur Rajjak</span>.
+  </p>
+
+  <!-- Grand Champion & Podium Showcase Card -->
+  <div class="champion-showcase-wrap" id="champion">
+    <div class="champion-card" data-team="Spain" title="Click to view Spain's full 2026 World Cup match journey">
+      <div class="champion-header">
+        <span class="champion-title-tag">
+          <svg class="svg-icon gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path><path d="M4 22h16"></path><path d="M10 14.66V17c0 .55-.45 1-1 1H8c-.55 0-1 .45-1 1v1c0 .55.45 1 1 1h8c.55 0 1-.45 1-1v-1c0-.55-.45-1-1-1h-1c-.55 0-1-.45-1-1v-2.34"></path><path d="M6 4h12a2 2 0 0 1 2 2v3a6 6 0 0 1-6 6h-4a6 6 0 0 1-6-6V6a2 2 0 0 1 2-2Z"></path></svg>
+          2026 World Champions
+        </span>
+      </div>
+      
+      <div class="champion-winner-stage">
+        <div class="champion-flag-huge">
+          <img src="https://flagpedia.net/data/flags/h80/es.png" alt="Spain flag" class="team-flag-img" width="84" height="56">
+        </div>
+        <div class="champion-winner-info">
+          <h2>
+            Spain
+            <span class="champion-stars" title="2-time World Champions (2010, 2026)">
+              <svg class="svg-icon gold fill-current" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              <svg class="svg-icon gold fill-current" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            </span>
+          </h2>
+          <p>Defeated Argentina 1–0 in the MetLife Stadium Grand Final</p>
+          <div class="champion-final-score">
+            <span>Final Whistle:</span>
+            <strong>Spain 1 &ndash; 0 Argentina</strong>
+            <span>(NYC)</span>
+          </div>
+          <div>
+            <span class="click-hint">
+              <svg class="svg-icon sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              Click card to view Spain's complete match log
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Podium Grid (Clickable Teams) -->
+      <div class="podium-grid">
+        <div class="podium-card rank-1" data-team="Spain" title="Click to view Spain's matches &amp; stats">
+          <span class="podium-rank-badge">1</span>
+          <div class="podium-team-name">
+            <img src="https://flagpedia.net/data/flags/h80/es.png" alt="Spain" class="team-flag-img" width="22" height="15">
+            <span>Spain</span>
+          </div>
+          <span class="podium-desc">
+            <svg class="svg-icon sm gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path><path d="M4 22h16"></path><path d="M6 4h12a2 2 0 0 1 2 2v3a6 6 0 0 1-6 6h-4a6 6 0 0 1-6-6V6a2 2 0 0 1 2-2Z"></path></svg>
+            Champions
+          </span>
+          <span class="click-hint">View Log &rarr;</span>
+        </div>
+
+        <div class="podium-card rank-2" data-team="Argentina" title="Click to view Argentina's matches &amp; stats">
+          <span class="podium-rank-badge">2</span>
+          <div class="podium-team-name">
+            <img src="https://flagpedia.net/data/flags/h80/ar.png" alt="Argentina" class="team-flag-img" width="22" height="15">
+            <span>Argentina</span>
+          </div>
+          <span class="podium-desc">
+            <svg class="svg-icon sm silver" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="13" r="7"></circle><path d="M12 9v8"></path><path d="M7 2 12 6.5 17 2"></path></svg>
+            Runners-Up
+          </span>
+          <span class="click-hint">View Log &rarr;</span>
+        </div>
+
+        <div class="podium-card rank-3" data-team="England" title="Click to view England's matches &amp; stats">
+          <span class="podium-rank-badge">3</span>
+          <div class="podium-team-name">
+            <img src="https://flagpedia.net/data/flags/h80/gb-eng.png" alt="England" class="team-flag-img" width="22" height="15">
+            <span>England</span>
+          </div>
+          <span class="podium-desc">
+            <svg class="svg-icon sm bronze" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="13" r="7"></circle><path d="M9.5 13h5"></path><path d="M7 2 12 6.5 17 2"></path></svg>
+            3rd Place
+          </span>
+          <span class="click-hint">View Log &rarr;</span>
+        </div>
+
+        <div class="podium-card rank-4" data-team="France" title="Click to view France's matches &amp; stats">
+          <span class="podium-rank-badge">4</span>
+          <div class="podium-team-name">
+            <img src="https://flagpedia.net/data/flags/h80/fr.png" alt="France" class="team-flag-img" width="22" height="15">
+            <span>France</span>
+          </div>
+          <span class="podium-desc">
+            <svg class="svg-icon sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="13" r="7"></circle><path d="M12 10v6"></path><path d="M7 2 12 6.5 17 2"></path></svg>
+            4th Place
+          </span>
+          <span class="click-hint">View Log &rarr;</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Quick Action Navigation Pills -->
+  <div class="hero-actions">
+    <a href="#schedule" class="btn-action gold">
+      <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+      All 104 Match Results
+    </a>
+    <a href="#awards" class="btn-action outline">
+      <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
+      Official Awards
+    </a>
+    <a href="#creator" class="btn-action creator-pill" title="Learn about Abdur Rajjak - project creator">
+      <span class="creator-badge-dot">
+        <svg class="svg-icon sm" style="width:12px;height:12px;stroke-width:3.5;" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      </span>
+      <span>About the Creator</span>
+    </a>
+    <button type="button" class="btn-action" id="btn-celebrate">
+      <svg class="svg-icon gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"></path><path d="M5 3v4"></path><path d="M19 17v4"></path></svg>
+      Celebrate Again
+    </button>
+  </div>
+
   <div class="hero-stats">
-    <div><strong>48</strong><span>Teams</span></div>
+    <div><strong>Spain</strong><span>Champions</span></div>
+    <div><strong>308</strong><span>Total Goals</span></div>
     <div><strong>104</strong><span>Matches</span></div>
-    <div><strong>16</strong><span>Stadiums</span></div>
-    <div><strong>39</strong><span>Days</span></div>
+    <div><strong>5.84M+</strong><span>Attendance</span></div>
+    <div><strong>48</strong><span>Nations</span></div>
   </div>
 </header>
 
 <main>
+
+  <!-- Tournament Awards Showcase -->
+  <section id="awards" class="section alt">
+    <div class="section-head">
+      <h2>Tournament Honors &amp; Awards <span class="pill gold">Official Accolades</span></h2>
+      <p>Recognizing the standout superstars who defined the 2026 FIFA World Cup in North America. Click any card to view their nation's match log.</p>
+    </div>
+    <div id="awards-grid" class="awards-grid"></div>
+  </section>
+
+  <!-- 104 Match Calendar & List Archive -->
   <section id="schedule" class="section">
     <div class="section-head">
-      <h2>Match Calendar <span class="pill">All 104 Matches</span></h2>
-      <p>Tap any date to see that day's matches. Days with matches show a count badge. Kickoff times are shown in Indian Standard Time (IST).</p>
+      <h2>Complete Match Archive <span class="pill">All 104 Results</span></h2>
+      <p>Search, filter, or tap any date to explore every completed match with full-time scores in Indian Standard Time (IST).</p>
     </div>
     <div class="view-toggle">
-      <button id="view-cal" class="active" type="button">&#x1F4C5; Calendar</button>
-      <button id="view-list" type="button">&#x2630; List</button>
+      <button id="view-cal" class="active" type="button">
+        <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+        Calendar
+      </button>
+      <button id="view-list" type="button">
+        <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
+        List View
+      </button>
     </div>
 
     <div id="cal-wrap">
@@ -85,67 +234,115 @@
     </div>
   </section>
 
-
-
-  <section class="section watch" id="watch">
-  <div class="watch-left">
-    <p class="eyebrow">How to watch</p>
-    <h2>Make matchday simple</h2>
-    <p>All 104 matches live in India. Use the calendar to pick a matchday in IST, then confirm exact channel placement with your provider on match week. The guide is designed as a living front page, so rows and channel tags are easy to update as broadcasters finalize assignments.</p>
-    <p class="watch-note">📺 <strong>India broadcast:</strong> Unite8 Sports (Zee's new sports channels) & ZEE5 (streaming). Doordarshan (DD) will carry 8 key matches free-to-air (opening, 4 QFs, 2 semis, final). FIFA+ also available via Eurosport India.</p>
-  </div>
-  <div class="watch-right">
-    <div class="watch-grid">
-      <div class="watch-card">
-        <span class="watch-label">English</span>
-        <strong>FOX / FS1</strong>
-        <small>USA broadcast</small>
-      </div>
-      <div class="watch-card">
-        <span class="watch-label">Indian</span>
-        <strong>Unite8 Sports / ZEE5</strong>
-        <small>India broadcast</small>
-      </div>
-      <div class="watch-card">
-        <span class="watch-label">Indian</span>
-        <strong>PLAYFy TV / Epic Sports</strong>
-        <small>Third-party broadcast</small>
-      </div>
-    </div>
-    <div class="watch-extra">
-      <div class="watch-tip">
-        <span>📡</span>
-        <div>
-          <strong>Doordarshan (Free-to-Air)</strong>
-          <p>8 matches on DD — opening match, 4 quarter-finals, both semi-finals & the final. No subscription needed.</p>
+  <!-- Creator Spotlight Section for Abdur Rajjak -->
+  <section id="creator" class="creator-section">
+    <div class="creator-card">
+      <div class="creator-inner">
+        <div class="creator-avatar-wrap">
+          <div class="creator-avatar">AR</div>
+          <span class="creator-badge-verified" title="Verified Creator">
+            <svg class="svg-icon sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          </span>
         </div>
-      </div>
-      <div class="watch-tip">
-        <span>🌐</span>
-        <div>
-          <strong>FIFA+ via Eurosport India</strong>
-          <p>Additional streaming option — select matches & highlights available</p>
+        <div class="creator-content">
+          <p class="creator-kicker">Project Creator &amp; Lead</p>
+          <h2>Crafted by Abdur Rajjak</h2>
+          <p>
+            This FIFA World Cup 2026 Guide was conceived and developed by <strong>Abdur Rajjak</strong> to provide football enthusiasts worldwide with instant matchday schedules, live standings, and dynamic tournament tracking throughout the 39-day spectacle.
+          </p>
+          <div class="creator-tags">
+            <span class="creator-tag">Web Developer</span>
+            <span class="creator-tag">Football Fanatic</span>
+            <span class="creator-tag">UI/UX Specialist</span>
+            <span class="creator-tag">2026 Archive Edition</span>
+          </div>
+          <div class="creator-actions">
+            <a href="https://github.com/Abdur07-svg" target="_blank" rel="noopener noreferrer" class="btn-action gold">
+              <svg class="svg-icon fill-current" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"></path></svg>
+              GitHub Profile
+            </a>
+            <a href="#champion" class="btn-action">
+              <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
+              Back to Champions
+            </a>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+
+  <!-- Broadcaster & Historic Record Section -->
+  <section class="section watch alt" id="watch">
+    <div class="watch-left">
+      <p class="eyebrow">Broadcast Archive</p>
+      <h2>How the world watched 2026</h2>
+      <p>104 matches were broadcast across 210 territories globally. In India, Unite8 Sports &amp; ZEE5 carried full HD coverage with free-to-air matches on Doordarshan.</p>
+      <p class="watch-note">
+        <svg class="svg-icon gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"></rect><polyline points="17 2 12 7 7 2"></polyline></svg>
+        <strong>Tournament Archive Note:</strong> Official highlights and full match replays remain available on FIFA+ and partner streaming services.
+      </p>
+    </div>
+    <div class="watch-right">
+      <div class="watch-grid">
+        <div class="watch-card">
+          <span class="watch-label">English</span>
+          <strong>FOX / FS1</strong>
+          <small>USA Host Broadcaster</small>
+        </div>
+        <div class="watch-card">
+          <span class="watch-label">Indian</span>
+          <strong>Unite8 Sports / ZEE5</strong>
+          <small>India Official Rights</small>
+        </div>
+        <div class="watch-card">
+          <span class="watch-label">Worldwide</span>
+          <strong>FIFA+ Replays</strong>
+          <small>Match Vault &amp; Highlights</small>
+        </div>
+      </div>
+      <div class="watch-extra">
+        <div class="watch-tip">
+          <span class="award-icon-box" style="width:38px;height:38px;">
+            <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4.9 19.1C1 15.2 1 8.8 4.9 4.9"></path><path d="M7.8 16.2c-2.3-2.3-2.3-6.1 0-8.5"></path><circle cx="12" cy="12" r="2"></circle><path d="M16.2 7.8c2.3 2.3 2.3 6.1 0 8.5"></path><path d="M19.1 4.9C23 8.8 23 15.1 19.1 19"></path></svg>
+          </span>
+          <div>
+            <strong>Doordarshan (Free-to-Air)</strong>
+            <p>Carried key milestones: opening match, 4 quarter-finals, semi-finals &amp; Spain's Grand Final victory.</p>
+          </div>
+        </div>
+        <div class="watch-tip">
+          <span class="award-icon-box" style="width:38px;height:38px;">
+            <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+          </span>
+          <div>
+            <strong>FIFA+ Archive</strong>
+            <p>Complete match highlights, Golden Ball reels &amp; trophy presentation available on demand.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
 </main>
 
 <footer class="footer">
-  <p><strong>World Cup 2026 Guide</strong> &mdash; an unofficial fan guide.</p>
-  <p>Created by <strong>Abdur Rajjak</strong>. Data compiled from FIFA's official releases and reputable sports sources.</p>
-  <p class="fine">Fixtures, kickoff times and results shown here are indicative. Always verify with FIFA's official schedule. Not affiliated with FIFA.</p>
+  <p><strong>World Cup 2026 Tournament Archive</strong> &mdash; an unofficial fan project.</p>
+  <p>Created by <strong>Abdur Rajjak</strong>. Data compiled from FIFA's official releases and verified sporting records.</p>
+  <p class="fine">All matches and tournament results shown are archived from the 2026 FIFA World Cup. Not affiliated with FIFA.</p>
 </footer>
 
 <div id="team-modal" class="modal hidden" role="dialog" aria-modal="true">
   <div class="modal-card">
-    <button class="modal-close" id="modal-close" aria-label="Close">&times;</button>
+    <button class="modal-close" id="modal-close" aria-label="Close">
+      <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    </button>
     <div id="modal-body"></div>
   </div>
 </div>
 
-<button class="back-to-top" id="back-to-top" aria-label="Back to top">&#8679;</button>
+<button class="back-to-top" id="back-to-top" aria-label="Back to top">
+  <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
+</button>
 
 <script src="data.js"></script>
 <script src="app.js"></script>
