@@ -387,18 +387,18 @@ const TOURNAMENT_SUMMARY = {
   totalStadiums: 16,
   totalAttendance: "5,840,000+",
   topScorer: "Kylian Mbappé (8 Goals)",
-  bestPlayer: "Lamine Yamal (Spain)"
+  bestPlayer: "Rodri (Spain)"
 };
 
 const TOURNAMENT_AWARDS = [
   {
     title: "Golden Ball (MVP)",
-    player: "Lamine Yamal",
+    player: "Rodri",
     team: "Spain",
     role: "Best Player of the Tournament",
     iconKey: "star",
     badge: "Champion & MVP",
-    desc: "Dazzled the world across 7 games, scoring 4 goals and providing 5 assists with unplayable wizardry on the right wing."
+    desc: "Spain's midfield leader, controlling the game with intelligent passing and calm leadership."
   },
   {
     title: "Golden Boot",
@@ -420,12 +420,12 @@ const TOURNAMENT_AWARDS = [
   },
   {
     title: "Best Young Player",
-    player: "Endrick",
-    team: "Brazil",
-    role: "Top Under-21 Talent",
+    player: "Pau Cubarsi",
+    team: "Spain",
+    role: "Top Under-20 Talent",
     iconKey: "bolt",
     badge: "Rising Star",
-    desc: "Electrified crowds with 3 crucial knockout goals, showing generational composure on the grandest stage."
+    desc: "Spain's young defensive star, combining composure, strength and intelligent reading of the game."
   }
 ];
 
